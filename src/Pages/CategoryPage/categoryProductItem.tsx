@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './categoryPage.module.css';
 import { useParams } from 'react-router-dom';
+import { AddToCart } from '../../Components/addToCart';
 
 export interface Props {
   id: string;

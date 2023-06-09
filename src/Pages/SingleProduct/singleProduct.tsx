@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getProduct } from '../../api/products';
 import { useQuery } from '@tanstack/react-query';
 import { Container } from '../../Components/container/container';
@@ -6,27 +6,41 @@ import styles from './singleProduct.module.css';
 import { useState } from 'react';
 import { Stars } from '../../Components/stars';
 import { CartQtyButtons } from '../../Components/cartQtyButtons/cartQtyButtons';
+import { CheckCategoriesUrl } from '../../Components/checkCategoriesUrl';
+import { AddToCart } from '../../Components/addToCart';
+// import { CartItem } from '../cart/cartItem';
 
 export const SingleProduct = () => {
+  interface cartItems {
+    id: number;
+    title: string;
+    image: string;
+    price: number;
+    quantity: number;
+  }
+
   const { productId } = useParams();
-  // const product = Number(productId);
-
-  // const [quantity, setQuantity] = useState<number>(1);
-
-  // if (quantity > 1000) {
-  //   setQuantity(1000);
-  // } else if (quantity < 1) {
-  //   setQuantity(1);
-  // }
 
   const productQuery = useQuery({
     queryKey: ['product', productId],
     queryFn: () => getProduct(Number(productId)),
   });
 
+  CheckCategoriesUrl();
+  const [quantity, setQuantity] = useState<number>(1);
+
   if (productQuery.status === 'loading') return <h1>Loading....</h1>;
 
-  console.log(productQuery.data?.data);
+  if (!productQuery.data)
+    return (
+      <h1>
+        Something went wrong, please go to <Link to={'/'}>Home Page</Link>
+      </h1>
+    );
+
+  const getQuantity = (num: number) => {
+    setQuantity(num);
+  };
 
   const {
     title,
@@ -35,7 +49,39 @@ export const SingleProduct = () => {
     // category,
     image,
     rating: { count, rate },
-  } = productQuery.data?.data;
+  } = productQuery?.data;
+
+  const selectedItem = productQuery?.data;
+
+  const setToLocalStorage = {
+    id: selectedItem.id,
+    title: selectedItem.title,
+    price: selectedItem.price,
+    image: selectedItem.image,
+    quantity: quantity,
+  };
+
+  const addToCart = () => {
+    let isExist = false;
+    const arr = JSON.parse(localStorage.getItem('item') || '[]');
+
+    if (selectedItem) {
+      // eslint-disable-next-line array-callback-return
+      arr.map((item: cartItems) => {
+        if (item.id === setToLocalStorage.id) {
+          item.quantity = setToLocalStorage.quantity;
+          isExist = true;
+        }
+      });
+
+      localStorage.setItem('item', JSON.stringify(arr));
+
+      if (!isExist) {
+        arr.push(setToLocalStorage);
+        localStorage.setItem('item', JSON.stringify(arr));
+      }
+    }
+  };
 
   return (
     <Container>
@@ -52,19 +98,12 @@ export const SingleProduct = () => {
           </div>
           <p className={styles.description}>{description}</p>
           <div className={styles.payBox}>
-            <CartQtyButtons />
-            {/* <div className={styles.quantityButton}>
-              <button className={styles.decrease} onClick={() => setQuantity(quantity - 1)}>
-                -
-              </button>
-              <input className={styles.quantity} type="number" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
-              <button className={styles.increase} onClick={() => setQuantity(quantity + 1)}>
-                +
-              </button>
-            </div> */}
+            <CartQtyButtons quantity={getQuantity} />
             <span className={styles.price}>{price}€</span>
           </div>
-          <button className={styles.addToBagButton}>Add to bag</button>
+          <button className={styles.addToBagButton} onClick={addToCart}>
+            Add to bag
+          </button>
         </div>
       </div>
     </Container>

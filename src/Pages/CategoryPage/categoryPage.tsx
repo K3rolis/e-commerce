@@ -6,11 +6,13 @@ import { useQuery } from '@tanstack/react-query';
 import { Container } from '../../Components/container/container';
 import styles from './categoryPage.module.css';
 import { CategoryProductItem, Props } from './categoryProductItem';
+import { CheckCategoriesUrl } from '../../Components/checkCategoriesUrl';
 
 export const CategoryPage = () => {
   const { category } = useParams();
-  const navigate = useNavigate();
-  const checkIfCategoryOfUrlExists = getCategoriesLocal.filter((check) => check.slug === category);
+
+  // const navigate = useNavigate();
+  // const checkIfCategoryOfUrlExists = getCategoriesLocal.filter((check) => check.slug === category);
 
   const checkedCategory = () => {
     for (const categoryOfProducts of getCategoriesLocal) {
@@ -19,12 +21,13 @@ export const CategoryPage = () => {
       }
     }
   };
+  CheckCategoriesUrl();
 
-  useEffect(() => {
-    if (checkIfCategoryOfUrlExists.length === 0) {
-      navigate('/notfound');
-    }
-  });
+  // useEffect(() => {
+  //   if (checkIfCategoryOfUrlExists.length === 0) {
+  //     navigate('/notfound');
+  //   }
+  // });
 
   const productsQuery = useQuery({
     queryKey: ['productsByCategory', category],
