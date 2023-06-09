@@ -5,22 +5,23 @@ import { Container } from '../../Components/container/container';
 import styles from './singleProduct.module.css';
 import { useState } from 'react';
 import { Stars } from '../../Components/stars';
+import { CartQtyButtons } from '../../Components/cartQtyButtons/cartQtyButtons';
 
 export const SingleProduct = () => {
   const { productId } = useParams();
-  const product = Number(productId);
+  // const product = Number(productId);
 
-  const [quantity, setQuantity] = useState<number>(1);
+  // const [quantity, setQuantity] = useState<number>(1);
 
-  if (quantity > 1000) {
-    setQuantity(1000);
-  } else if (quantity < 1) {
-    setQuantity(1);
-  }
+  // if (quantity > 1000) {
+  //   setQuantity(1000);
+  // } else if (quantity < 1) {
+  //   setQuantity(1);
+  // }
 
   const productQuery = useQuery({
-    queryKey: ['product', product],
-    queryFn: () => getProduct(product),
+    queryKey: ['product', productId],
+    queryFn: () => getProduct(Number(productId)),
   });
 
   if (productQuery.status === 'loading') return <h1>Loading....</h1>;
@@ -51,7 +52,8 @@ export const SingleProduct = () => {
           </div>
           <p className={styles.description}>{description}</p>
           <div className={styles.payBox}>
-            <div className={styles.quantityButton}>
+            <CartQtyButtons />
+            {/* <div className={styles.quantityButton}>
               <button className={styles.decrease} onClick={() => setQuantity(quantity - 1)}>
                 -
               </button>
@@ -59,7 +61,7 @@ export const SingleProduct = () => {
               <button className={styles.increase} onClick={() => setQuantity(quantity + 1)}>
                 +
               </button>
-            </div>
+            </div> */}
             <span className={styles.price}>{price}€</span>
           </div>
           <button className={styles.addToBagButton}>Add to bag</button>

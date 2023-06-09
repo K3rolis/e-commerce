@@ -1,0 +1,11 @@
+.cartSectionTitle {
+  font-size: 2.6rem;
+  font-weight: 700;
+  border-bottom: 1px solid gray;
+  padding-block: 20px;
+}
+
+.cartWrapper {
+  max-width: 800px;
+  margin-top: 20px;
+}

@@ -32,7 +32,7 @@ export const Navbar = () => {
           </div>
 
           <div className={styles.cart}>
-            <NavLink to="/">
+            <NavLink to="/cart">
               <FaShoppingBag style={{ fontSize: '2rem' }} /> <span>0</span>
             </NavLink>
           </div>

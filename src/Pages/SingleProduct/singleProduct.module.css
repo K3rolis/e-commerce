@@ -9,12 +9,12 @@
 
 .imageBox {
   width: 50%;
-  height: 460px;
+  align-self: center;
 }
 
 .imageBox img {
-  width: auto;
-  height: 100%;
+  width: 80%;
+  height: auto;
 }
 
 .productContent {
@@ -63,70 +63,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.quantityButton {
-  display: flex;
-  justify-content: space-between;
-  background-color: white;
-  width: 30%;
-}
-
-.increase,
-.decrease {
-  position: relative;
-  width: 30px;
-  background-color: white;
-  border-radius: 0;
-  /* border: 1px solid transparent; */
-  font-size: 2rem;
-}
-
-.decrease::after {
-  content: '';
-  position: absolute;
-  width: 1px;
-  top: 15%;
-  right: 0;
-  height: 70%;
-  display: flex;
-  background-color: gray;
-}
-
-.increase::before {
-  content: '';
-  position: absolute;
-  width: 1px;
-  top: 15%;
-  left: 0;
-  height: 70%;
-  display: flex;
-  background-color: gray;
-}
-
-.quantity {
-  align-items: center;
-  display: flex;
-  font-size: 2rem;
-  border: 1px solid white;
-  width: 50px;
-  text-align: center;
-}
-
-.quantity:focus {
-  outline: none;
-}
-
-/* Chrome, Safari, Edge, Opera */
-.quantity::-webkit-outer-spin-button,
-.quantity::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type='number'] {
-  -moz-appearance: textfield;
 }
 
 .price {

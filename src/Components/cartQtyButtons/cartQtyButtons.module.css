@@ -1,0 +1,79 @@
+.quantityButton {
+  display: flex;
+  align-self: center;
+  background-color: white;
+  height: 45px;
+  width: 120px;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+.increase,
+.decrease {
+  position: relative;
+  width: 25%;
+  background-color: white;
+  /* border: 1px solid transparent; */
+  font-size: 2rem;
+  background-color: gray;
+  border-radius: 0px;
+  /* border: 1px solid black; */
+}
+
+.increase {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.decrease {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.decrease::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  top: 15%;
+  right: 0;
+  height: 70%;
+  display: flex;
+  background-color: gray;
+}
+
+.increase::before {
+  content: '';
+  position: absolute;
+  width: 1px;
+  top: 15%;
+  left: 0;
+  height: 70%;
+  display: flex;
+  background-color: gray;
+}
+
+.quantity {
+  align-items: center;
+  display: flex;
+  font-size: 2rem;
+  border: 1px solid white;
+  width: 50%;
+  text-align: center;
+  background-color: white;
+}
+
+.quantity:focus {
+  outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.quantity::-webkit-outer-spin-button,
+.quantity::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
