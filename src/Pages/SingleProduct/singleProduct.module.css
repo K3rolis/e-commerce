@@ -1,0 +1,141 @@
+.productItem {
+  display: flex;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 50px;
+  gap: 20px;
+  /* height: 400px; */
+}
+
+.imageBox {
+  width: 50%;
+  height: 460px;
+}
+
+.imageBox img {
+  width: auto;
+  height: 100%;
+}
+
+.productContent {
+  width: 50%;
+  border: 1px solid black;
+  background-color: gray;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.rating {
+  text-align: left;
+  font-size: 1.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.rate {
+  background-color: orange;
+  border-radius: 4px;
+  padding: 2px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.reviews {
+  margin-left: auto;
+  color: gainsboro;
+}
+
+.description {
+  font-size: 1.6rem;
+  text-align: justify;
+}
+
+.payBox {
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.quantityButton {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  width: 30%;
+}
+
+.increase,
+.decrease {
+  position: relative;
+  width: 30px;
+  background-color: white;
+  border-radius: 0;
+  /* border: 1px solid transparent; */
+  font-size: 2rem;
+}
+
+.decrease::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  top: 15%;
+  right: 0;
+  height: 70%;
+  display: flex;
+  background-color: gray;
+}
+
+.increase::before {
+  content: '';
+  position: absolute;
+  width: 1px;
+  top: 15%;
+  left: 0;
+  height: 70%;
+  display: flex;
+  background-color: gray;
+}
+
+.quantity {
+  align-items: center;
+  display: flex;
+  font-size: 2rem;
+  border: 1px solid white;
+  width: 50px;
+  text-align: center;
+}
+
+.quantity:focus {
+  outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.quantity::-webkit-outer-spin-button,
+.quantity::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.price {
+  font-size: 2.6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.addToBagButton {
+  margin-top: 20px;
+}
