@@ -1,28 +1,23 @@
-import { useEffect, useState } from 'react';
 import styles from './cartQtyButtons.module.css';
+import { useShoppingCart } from '../../context/ShoppingCartContext';
 
-export const CartQtyButtons = (props: any) => {
-  const [quantity, setQuantity] = useState<number>(1);
+type cartQtyProps = {
+  id: number;
+  price: number;
+};
 
-  // console.log(quantity);
+export const CartQtyButtons = (props: cartQtyProps) => {
+  const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity } = useShoppingCart();
 
-  if (quantity > 1000) {
-    setQuantity(1000);
-  } else if (quantity < 1) {
-    setQuantity(1);
-  }
-
-  useEffect(() => {
-    props.quantity(quantity);
-  });
+  const quantity = getItemQuantity(props.id);
 
   return (
     <div className={styles.quantityButton}>
-      <button className={styles.decrease} onClick={() => setQuantity(quantity - 1)}>
+      <button className={styles.decrease} onClick={() => decreaseCartQuantity(props.id)}>
         -
       </button>
-      <input className={styles.quantity} type="number" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
-      <button className={styles.increase} onClick={() => setQuantity(quantity + 1)}>
+      <span className={styles.quantity}>{quantity}</span>
+      <button className={styles.increase} onClick={() => increaseCartQuantity(props.id, props.price)}>
         +
       </button>
     </div>

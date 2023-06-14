@@ -8,8 +8,6 @@ export const CheckCategoriesUrl = () => {
   const navigate = useNavigate();
   const checkIfCategoryOfUrlExists = getCategoriesLocal.filter((check) => check.slug === category);
 
-  console.log(checkIfCategoryOfUrlExists.length);
-
   useEffect(() => {
     if (checkIfCategoryOfUrlExists.length === 0) {
       navigate('/notfound');

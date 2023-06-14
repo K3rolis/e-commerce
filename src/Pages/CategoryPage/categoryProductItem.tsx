@@ -1,16 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import styles from './categoryPage.module.css';
 import { useParams } from 'react-router-dom';
-import { AddToCart } from '../../Components/addToCart';
+import { useShoppingCart } from '../../context/ShoppingCartContext';
 
-export interface Props {
-  id: string;
+export interface CategoryProductProps {
+  id: number;
   image: string;
   title: string;
+  price: number;
+  quantity: number;
 }
 
-export const CategoryProductItem = (props: Props) => {
+export const CategoryProductItem = (props: CategoryProductProps) => {
   const { category } = useParams();
+  const { increaseCartQuantity } = useShoppingCart();
+
   return (
     <div className={styles.productItem}>
       <NavLink to={`/shop/${category}/${props.id}`}>
@@ -19,7 +23,9 @@ export const CategoryProductItem = (props: Props) => {
         </div>
         <p className={styles.title}> {props.title}</p>
       </NavLink>
-      <button type="button">Add to bag</button>
+      <button type="button" onClick={() => increaseCartQuantity(props.id, props.price)}>
+        Add to bag
+      </button>
     </div>
   );
 };

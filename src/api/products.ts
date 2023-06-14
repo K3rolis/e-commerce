@@ -5,10 +5,6 @@ export const getProductsByCategory = async (category?: string) => {
 };
 
 export const getProduct = async (id: number) => {
-  // try {
   const res = await Axios.get(`https://fakestoreapi.com/products/${id}`);
   return res.data;
-  // } catch (error) {
-  //   console.log(error);
-  // }
 };
