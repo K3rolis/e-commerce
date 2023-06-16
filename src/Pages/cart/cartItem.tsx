@@ -10,7 +10,7 @@ export interface CartItemProps {
 }
 
 export const CartItem = ({ id, image, title, price }: CartItemProps) => {
-  const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity } = useShoppingCart();
+  const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, increaseOrDecreaseQuantity } = useShoppingCart();
 
   const quantity = getItemQuantity(id);
 
@@ -23,11 +23,11 @@ export const CartItem = ({ id, image, title, price }: CartItemProps) => {
         <div className={styles.title}>{title}</div>
 
         <div className={styles.quantityButton}>
-          <button className={styles.decrease} onClick={() => decreaseCartQuantity(id)}>
+          <button className={styles.decrease} onClick={() => increaseOrDecreaseQuantity(id, price, -1)}>
             -
           </button>
           <span className={styles.quantity}>{quantity}</span>
-          <button className={styles.increase} onClick={() => increaseCartQuantity(id, price)}>
+          <button className={styles.increase} onClick={() => increaseOrDecreaseQuantity(id, price, 1)}>
             +
           </button>
         </div>

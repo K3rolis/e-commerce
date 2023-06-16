@@ -55,3 +55,7 @@
   font-size: 2rem;
   font-weight: 700;
 }
+.quantity {
+  font-size: 1.8rem;
+  padding-inline: 5px;
+}

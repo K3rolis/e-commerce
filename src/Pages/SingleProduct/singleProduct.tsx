@@ -8,7 +8,9 @@ import { CheckCategoriesUrl } from '../../Components/checkCategoriesUrl';
 import { useShoppingCart } from '../../context/ShoppingCartContext';
 
 export const SingleProduct = () => {
-  const { increaseCartQuantity } = useShoppingCart();
+  const { increaseCartQuantity, increaseOrDecreaseQuantity, getItemQuantity } = useShoppingCart();
+
+  // const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, increaseOrDecreaseQuantity } = useShoppingCart();
 
   interface cartItems {
     id: number;
@@ -60,6 +62,16 @@ export const SingleProduct = () => {
           <p className={styles.description}>{description}</p>
           <div className={styles.payBox}>
             <span className={styles.price}>{price}€</span>
+          </div>
+
+          <div className={styles.quantityButton}>
+            <button className={styles.decrease} onClick={() => increaseOrDecreaseQuantity(id, price, -1)}>
+              -
+            </button>
+            <span className={styles.quantity}>{getItemQuantity(id)}</span>
+            <button className={styles.increase} onClick={() => increaseOrDecreaseQuantity(id, price, 1)}>
+              +
+            </button>
           </div>
           <button className={styles.addToBagButton} onClick={() => increaseCartQuantity(id, price)}>
             Add to bag
