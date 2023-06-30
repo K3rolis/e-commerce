@@ -1,5 +1,4 @@
 import styles from './CartItem.module.css';
-import { useShoppingCart } from '../../context/ShoppingCartContext';
 import { CartQtyButtons } from '../CartQtyButtons/CartQtyButtons';
 
 export interface CartItemProps {
@@ -11,10 +10,6 @@ export interface CartItemProps {
 }
 
 export const CartItem = ({ id, image, title, price }: CartItemProps) => {
-  const { getItemQuantity, increaseOrDecreaseQuantity } = useShoppingCart();
-
-  const quantity = getItemQuantity(id);
-
   return (
     <div className={styles.cartItem}>
       <div className={styles.cartItemImageBox}>

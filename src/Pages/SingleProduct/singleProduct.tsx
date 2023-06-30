@@ -12,16 +12,6 @@ import { SyncLoader } from 'react-spinners';
 export const SingleProduct = () => {
   const { increaseCartQuantity } = useShoppingCart();
 
-  // const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, increaseOrDecreaseQuantity } = useShoppingCart();
-
-  interface cartItems {
-    id: number;
-    title: string;
-    image: string;
-    price: number;
-    quantity: number;
-  }
-
   const { productId } = useParams();
 
   const productQuery = useQuery({
