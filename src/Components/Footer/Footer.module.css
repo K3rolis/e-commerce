@@ -1,0 +1,22 @@
+.logoBox {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.logo {
+  font-size: 2.5rem;
+  color: gray;
+  cursor: pointer;
+}
+
+.logo:hover {
+  color: #251749;
+}
+
+.footerText {
+  font-size: 2rem;
+  color: gray;
+  margin-block: 30px;
+}

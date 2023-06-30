@@ -1,10 +1,11 @@
 import { useQueries } from '@tanstack/react-query';
-import { Container } from '../../Components/container/container';
-import styles from './cart.module.css';
-import { CartItem } from './cartItem';
+import { Container } from '../../Components/Container/Container';
+import styles from './Cart.module.css';
+import { CartItem } from '../../Components/Cart/CartItem';
 import { getProduct } from '../../api/products';
 import { useShoppingCart } from '../../context/ShoppingCartContext';
-import { CartCheckout } from './cartCheckout';
+import { CartCheckout } from '../../Components/Cart/CartCheckout';
+import { SyncLoader } from 'react-spinners';
 
 type cartItemProps = {
   id: number;
@@ -23,7 +24,7 @@ export const Cart = () => {
   });
 
   for (let i = 0; i < cartQueries.length; i++) {
-    if (cartQueries[i].isLoading) return <h1>Loading</h1>;
+    if (cartQueries[i].isLoading) return <SyncLoader className="loading-spinner" color="#36d7b7" />;
   }
 
   return (

@@ -1,4 +1,4 @@
-import styles from './cartQtyButtons.module.css';
+import styles from './CartQtyButtons.module.css';
 import { useShoppingCart } from '../../context/ShoppingCartContext';
 
 type cartQtyProps = {
@@ -7,17 +7,17 @@ type cartQtyProps = {
 };
 
 export const CartQtyButtons = (props: cartQtyProps) => {
-  const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity } = useShoppingCart();
+  const { getItemQuantity, increaseOrDecreaseQuantity } = useShoppingCart();
 
   const quantity = getItemQuantity(props.id);
 
   return (
-    <div className={styles.quantityButton}>
-      <button className={styles.decrease} onClick={() => decreaseCartQuantity(props.id)}>
+    <div className={styles.quantityBox}>
+      <button className={styles.decrease} onClick={() => quantity > 0 && increaseOrDecreaseQuantity(props.id, props.price, -1)}>
         -
       </button>
       <span className={styles.quantity}>{quantity}</span>
-      <button className={styles.increase} onClick={() => increaseCartQuantity(props.id, props.price)}>
+      <button className={styles.increase} onClick={() => quantity < 999 && increaseOrDecreaseQuantity(props.id, props.price, +1)}>
         +
       </button>
     </div>

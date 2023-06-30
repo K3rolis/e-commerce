@@ -20,6 +20,7 @@
   justify-content: space-between;
   /* border-top: 1px solid gray; */
   border-bottom: 1px solid gray;
+  padding-inline: 5px;
 }
 
 .cartItemImageBox {
@@ -38,24 +39,50 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
   padding-left: 20px;
 }
 
 .title {
-  max-width: 250px;
+  width: 50%;
   font-size: 1.6rem;
   text-align: center;
   display: flex;
   align-items: center;
-  font-weight: 500;
+  font-family: var(--secondary-font-family);
+  color: #555;
+}
+
+.quantityBox {
+  width: 100px;
 }
 
 .price {
+  width: 20%;
   font-size: 2rem;
   font-weight: 700;
+  text-align: right;
 }
+
 .quantity {
+  display: inline-block;
+  width: 30px;
+  padding: 20px;
   font-size: 1.8rem;
   padding-inline: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .cartContent {
+    flex-direction: column;
+  }
+  .title {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  .price {
+    width: 100%;
+    text-align: center;
+  }
 }

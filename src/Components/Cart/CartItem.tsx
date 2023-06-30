@@ -1,5 +1,6 @@
-import styles from './cartItem.module.css';
+import styles from './CartItem.module.css';
 import { useShoppingCart } from '../../context/ShoppingCartContext';
+import { CartQtyButtons } from '../CartQtyButtons/CartQtyButtons';
 
 export interface CartItemProps {
   id: number;
@@ -10,7 +11,7 @@ export interface CartItemProps {
 }
 
 export const CartItem = ({ id, image, title, price }: CartItemProps) => {
-  const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, increaseOrDecreaseQuantity } = useShoppingCart();
+  const { getItemQuantity, increaseOrDecreaseQuantity } = useShoppingCart();
 
   const quantity = getItemQuantity(id);
 
@@ -22,15 +23,8 @@ export const CartItem = ({ id, image, title, price }: CartItemProps) => {
       <div className={styles.cartContent}>
         <div className={styles.title}>{title}</div>
 
-        <div className={styles.quantityButton}>
-          <button className={styles.decrease} onClick={() => increaseOrDecreaseQuantity(id, price, -1)}>
-            -
-          </button>
-          <span className={styles.quantity}>{quantity}</span>
-          <button className={styles.increase} onClick={() => increaseOrDecreaseQuantity(id, price, 1)}>
-            +
-          </button>
-        </div>
+        <CartQtyButtons id={id} price={price} />
+
         <div className={styles.price}>{price} €</div>
       </div>
     </div>

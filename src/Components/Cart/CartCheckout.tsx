@@ -1,4 +1,4 @@
-import styles from './cartCheckout.module.css';
+import styles from './CartCheckout.module.css';
 import { useShoppingCart } from '../../context/ShoppingCartContext';
 
 type cartItemProps = {
