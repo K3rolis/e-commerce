@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/typescript-e-commerce/static/css/main.0c4d26b7.css",
+    "main.js": "/typescript-e-commerce/static/js/main.2da2c88c.js",
+    "static/media/hero-banner.jpg": "/typescript-e-commerce/static/media/hero-banner.17ed7b38979c73cf959f.jpg",
+    "index.html": "/typescript-e-commerce/index.html",
+    "main.0c4d26b7.css.map": "/typescript-e-commerce/static/css/main.0c4d26b7.css.map",
+    "main.2da2c88c.js.map": "/typescript-e-commerce/static/js/main.2da2c88c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c4d26b7.css",
+    "static/js/main.2da2c88c.js"
+  ]
+}
