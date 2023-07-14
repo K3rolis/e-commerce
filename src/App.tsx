@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './Components/Navbar/Navbar';
 import { CategoryPage } from './Pages/CategoryPage/CategoryPage';
 import { Home } from './Pages/Home/Home';
 import { NotFound } from './Pages/Errors/NotFound';
 import { SingleProduct } from './Pages/SingleProduct/SingleProduct';
-import { Cart } from './Pages/cart/Cart';
+import { Cart } from './Pages/Cart/Cart';
 import { ShoppingCartProvider } from './context/ShoppingCartContext';
 import { Footer } from './Components/Footer/Footer';
 import { FooterNavbar } from './Components/Navbar/FooterNavbar';
