@@ -1,24 +1,16 @@
 import { Link, useParams } from 'react-router-dom';
 import { getProduct } from '../../api/products';
 import { useQuery } from '@tanstack/react-query';
-import { Container } from '../../Components/container/container';
-import styles from './singleProduct.module.css';
-import { Stars } from '../../Components/stars';
+import { Container } from '../../Components/Container/Container';
+import styles from './SingleProduct.module.css';
+import { Stars } from '../../Components/Stars';
 import { CheckCategoriesUrl } from '../../Components/checkCategoriesUrl';
 import { useShoppingCart } from '../../context/ShoppingCartContext';
+import { CartQtyButtons } from '../../Components/CartQtyButtons/CartQtyButtons';
+import { SyncLoader } from 'react-spinners';
 
 export const SingleProduct = () => {
-  const { increaseCartQuantity, increaseOrDecreaseQuantity, getItemQuantity } = useShoppingCart();
-
-  // const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, increaseOrDecreaseQuantity } = useShoppingCart();
-
-  interface cartItems {
-    id: number;
-    title: string;
-    image: string;
-    price: number;
-    quantity: number;
-  }
+  const { increaseCartQuantity } = useShoppingCart();
 
   const { productId } = useParams();
 
@@ -28,7 +20,7 @@ export const SingleProduct = () => {
   });
 
   CheckCategoriesUrl();
-  if (productQuery.status === 'loading') return <h1>Loading....</h1>;
+  if (productQuery.status === 'loading') return <SyncLoader className="loading-spinner" color="#36d7b7" />;
 
   if (!productQuery.data)
     return (
@@ -47,7 +39,7 @@ export const SingleProduct = () => {
   } = productQuery?.data;
 
   return (
-    <Container>
+    <Container className={styles.container}>
       <div className={styles.productItem}>
         <div className={styles.imageBox}>
           <img src={image} alt={title} />{' '}
@@ -62,17 +54,9 @@ export const SingleProduct = () => {
           <p className={styles.description}>{description}</p>
           <div className={styles.payBox}>
             <span className={styles.price}>{price}€</span>
+            <CartQtyButtons id={id} price={price} />
           </div>
 
-          <div className={styles.quantityButton}>
-            <button className={styles.decrease} onClick={() => increaseOrDecreaseQuantity(id, price, -1)}>
-              -
-            </button>
-            <span className={styles.quantity}>{getItemQuantity(id)}</span>
-            <button className={styles.increase} onClick={() => increaseOrDecreaseQuantity(id, price, 1)}>
-              +
-            </button>
-          </div>
           <button className={styles.addToBagButton} onClick={() => increaseCartQuantity(id, price)}>
             Add to bag
           </button>

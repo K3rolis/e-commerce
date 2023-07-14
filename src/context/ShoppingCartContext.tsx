@@ -38,7 +38,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   function increaseOrDecreaseQuantity(id: number, price: number, increment: number) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
-        return currItems.filter((item) => item.id !== id);
+        return [...currItems, { id, quantity: 1, price: price }];
       } else if (currItems.find((item) => item.id === id && item.quantity + increment < 1)) {
         return currItems.filter((item) => item.id !== id);
       } else {

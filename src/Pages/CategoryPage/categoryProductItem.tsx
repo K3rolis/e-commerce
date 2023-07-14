@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import styles from './categoryPage.module.css';
+import styles from './CategoryPage.module.css';
 import { useParams } from 'react-router-dom';
 import { useShoppingCart } from '../../context/ShoppingCartContext';
 
@@ -17,7 +17,7 @@ export const CategoryProductItem = (props: CategoryProductProps) => {
 
   return (
     <div className={styles.productItem}>
-      <NavLink to={`/shop/${category}/${props.id}`}>
+      <NavLink className={styles.productLink} to={`/shop/${category}/${props.id}`}>
         <div className={styles.image}>
           <img src={props.image} alt={props.title} loading="lazy" />
         </div>

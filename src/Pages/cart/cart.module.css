@@ -9,3 +9,9 @@
   max-width: 800px;
   margin-top: 20px;
 }
+
+@media screen and (max-width: 600px) {
+  .cartContent {
+    flex-direction: column;
+  }
+}

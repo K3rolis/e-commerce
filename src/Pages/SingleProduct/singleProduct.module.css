@@ -20,16 +20,18 @@
 .productContent {
   width: 50%;
   border: 1px solid black;
-  background-color: gray;
+  /* background-color: gray; */
   border-radius: 8px;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  gap: 25px;
 }
 
 .title {
   font-size: 2.4rem;
-  font-weight: 700;
+  font-weight: 600;
+  font-family: var(--secondary-font-family);
 }
 
 .rating {
@@ -50,12 +52,14 @@
 
 .reviews {
   margin-left: auto;
-  color: gainsboro;
+  font-size: 1.6rem;
 }
 
 .description {
   font-size: 1.6rem;
   text-align: justify;
+  color: #555;
+  font-family: var(--secondary-font-family);
 }
 
 .payBox {
@@ -67,6 +71,7 @@
 
 .price {
   font-size: 2.6rem;
+  font-style: italic;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -74,4 +79,18 @@
 
 .addToBagButton {
   margin-top: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .productItem {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+  }
+  .productContent {
+    width: 100%;
+  }
+  .container {
+    padding-right: 10px;
+  }
 }

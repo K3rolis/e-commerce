@@ -1,7 +1,3 @@
-.test {
-  position: relative;
-}
-
 .heroBanner {
   position: relative;
   width: 100%;
@@ -12,12 +8,11 @@
 .heroBannerContent {
   position: absolute;
   top: 50%;
-  background-color: rgba(255, 255, 255, 0.3);
-  /* height: 100px; */
-  /* max-width: 30%; */
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: 8px;
-  padding: 10px;
+  padding: 20px;
   color: white;
+  margin-left: 5px;
 }
 
 .heroTitle {
@@ -31,9 +26,18 @@
 }
 
 .heroButton {
+  display: inline-block;
   margin-top: 10px;
+  padding: 10px;
+  color: #555;
+  background-color: white;
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.6rem;
 }
 
-button:hover {
+.heroButton:hover {
   background-color: #cecece;
 }

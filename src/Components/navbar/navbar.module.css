@@ -6,6 +6,7 @@
 }
 
 .navbar a {
+  position: relative;
   color: white;
   text-decoration: none;
   margin-inline: 10px;
@@ -15,8 +16,12 @@
   letter-spacing: 1px;
 }
 
-.active {
-  color: #fffbeb;
+a.active {
+  color: #ca2665;
+}
+
+.navbar a:hover {
+  color: #ca2665;
 }
 
 .header {
@@ -33,4 +38,70 @@
 
 .cart span {
   font-size: 1.5rem;
+}
+
+.hamburgerMenu {
+  display: none;
+}
+
+@media screen and (max-width: 769px) {
+  .categories {
+    display: none;
+  }
+
+  .header {
+    padding: 20px;
+    transition: 1s ease;
+  }
+
+  .hamburgerMenu {
+    display: flex;
+    text-align: right;
+
+    display: block;
+    transition: 1s ease;
+  }
+
+  .hamburger {
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    transition: 1s ease;
+  }
+
+  .responsiveNavigation {
+    position: fixed;
+    background-color: #251749;
+    top: 63px;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 30px;
+    transform: translateX(0%);
+    font-size: 3rem;
+    transition: 1s ease;
+  }
+
+  .activeResponsiveNavigation {
+    transform: translateX(0%);
+    transition: 1s ease;
+  }
+
+  .responsiveCategories::after {
+    position: absolute;
+    content: '';
+    transform: translateX(100%);
+    transition: 1s ease;
+  }
+
+  a.test {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 2.5rem;
+    transition: 1s ease;
+  }
 }
